@@ -1,0 +1,652 @@
+{
+    "version": "2.0.0",
+    "cwd": "${workspaceFolder}",
+    "tasks": [
+        {
+            "label": "compile release",
+            "command": "go",
+            "args": [
+                "build",
+                "./..."
+            ],
+            "group": "build",
+            "type": "shell"
+        },
+        {
+            "label": "compile debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "./..."
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "test",
+            "command": "go",
+            "args": [
+                "test",
+                "-v",
+                "./..."
+            ],
+            "group": "test",
+            "type": "shell"
+        },
+        {
+            "label": "build TestServer debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-o",
+                "bin/debug/testServer",
+                "./foundation/server/test/main"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build Authen debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/authServer",
+                "./auth_service"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build Config debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/configServer",
+                "./config_service"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build background server debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/backgroundServer",
+                "./asset_service/background"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build wallet background debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/walletBackground",
+                "./report_service/wallet_background_indexer"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build User debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-v",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/userServer",
+                "./user_service/user_service"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build KYC debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/kycServer",
+                "./user_service/kyc_service"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build Sign debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/signServer",
+                "./sign_service"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build MerchantAdminServer debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/merchantAdminServer",
+                "./admin_service/merchant_admin"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build AdminServer debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/adminServer",
+                "./admin_service/admin"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build BlockChainIndexer debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/blockChainIndexer",
+                "./report_service/block_chain_indexer"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build approvalObserver debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/approvalObserver",
+                "./asset_service/approval_observer"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build depositObserver debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/depositObserver",
+                "./asset_service/deposit_observer"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build userObserver debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/userObserver",
+                "./asset_service/user_observer"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build withdraw observer debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/withdrawObserver",
+                "./asset_service/withdraw_observer"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build key gen debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/keyGen",
+                "./tool/key_gen"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build smart contract validator debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/smartContractValidator",
+                "./tool/smart_contract_validator"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build sweepService debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/sweepServer",
+                "./asset_service/sweep_service"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build encrypt tool debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/encryptTool",
+                "./tool/encrypt_tool"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build Server Control Client debug",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=\"all=-N -l\"",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/debug/serverControlClient",
+                "./tool/server_control_client"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build Authen release",
+            "command": "go",
+            "args": [
+                "build",
+                "-o",
+                "bin/release/authServer",
+                "./auth_service"
+            ],
+            "group": "build",
+            "type": "shell"
+        },
+        {
+            "label": "build Config release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/configServer",
+                "./config_service"
+            ],
+            "group": "build",
+            "type": "shell"
+        },
+        {
+            "label": "build User release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/userServer",
+                "./user_service/user_service"
+            ],
+            "group": "build",
+            "type": "shell"
+        },
+        {
+            "label": "build Sign release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/signServer",
+                "./sign_service"
+            ],
+            "group": "build",
+            "type": "shell"
+        },
+        {
+            "label": "build MerchantAdminServer release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/merchantAdminServer",
+                "./admin_service/merchant_admin"
+            ],
+            "group": "build",
+            "type": "shell"
+        },
+        {
+            "label": "build AdminServer release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/adminServer",
+                "./admin_service/admin"
+            ],
+            "group": "build",
+            "type": "shell"
+        },
+        {
+            "label": "build BlockChainIndexer release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/blockChainIndexer",
+                "./report_service/block_chain_indexer/bc_indexer"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build approvalObserver release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/approvalObserver",
+                "./asset_service/approval_observer"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build withdraw observer release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/withdrawObserver",
+                "./asset_service/withdraw_observer"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build deposit observer release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/depositObserver",
+                "./asset_service/deposit_observer"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build user observer release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/userObserver",
+                "./asset_service/user_observer"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build encrypt tool release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/encryptTool",
+                "./tool/encrypt_tool"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build key gen release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/keyGen",
+                "./tool/key_gen"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build background server release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/backgroundServer",
+                "./asset_service/background"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build wallet background release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/walletBackground",
+                "./report_service/wallet_background_indexer"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "compile all smart contract",
+            "command": "truffle",
+            "args": [
+                "compile"
+            ],
+            "group": "build",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/smartcontract"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "recompile all smart contract",
+            "command": "truffle",
+            "args": [
+                "compile",
+                "--all"
+            ],
+            "group": "build",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/smartcontract"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "build ExtractAbi release",
+            "command": "go",
+            "args": [
+                "build",
+                "-o",
+                "bin/release/extractAbi",
+                "./tool/extract_abi"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build sweepService release",
+            "command": "go",
+            "args": [
+                "build",
+                "-tags",
+                "dev",
+                "-o",
+                "bin/release/sweepServer",
+                "./asset_service/sweep_service"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build typescript foundation",
+            "command": "typescript/node_modules/.bin/tsc",
+            "args": [
+                "-p",
+                "typescript/foundation"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []   
+        },
+        {
+            "label": "build typescript unit test",
+            "command": "typescript/node_modules/.bin/tsc",
+            "args": [
+                "-p",
+                "typescript/foundation/test"
+            ],
+            "group": "build",
+            "type": "shell",
+            "problemMatcher": []   
+        }
+    ],
+}

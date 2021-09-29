@@ -1,0 +1,46 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.abi
+*.bin
+*.zip
+
+# Test binary, built with `go test -c`
+*.test
+
+__debug_bin
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+node_modules
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+bin/debug/
+bin/release/
+smartcontract/package-lock.json
+smartcontract/package.json
+smartcontract/build/contracts
+smartcontract/build/golang/contract
+smartcontract/build/bin
+smartcontract/build/abi
+.idea/eurus-backend.iml
+.idea/modules.xml
+.idea/vcs.xml
+bin/release/encryptTool
+smartcontract/migrations
+.DS_Store
+smartcontract/build/golang/contract/test/TestConstant_prod.go
+bin/
+*.log
+typescript/dist
+smartcontract/build/typescript
+smartcontract/SmartContractDeploy.json
+config/*
+typescript/src/server/*/config/*.json
+typescript/logs/*
+secret/Constant_testnet.go
+secret/Constant_prod.go

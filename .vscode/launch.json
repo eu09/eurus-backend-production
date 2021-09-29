@@ -1,0 +1,240 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Debug AuthServer",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/auth_service/AuthenMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/AuthServerConfig.json"]
+        },
+        {
+            "name": "Debug ConfigServer",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/config_service/ConfigServerMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/ConfigServerConfig.json"]
+        },
+        {
+            "name": "Debug UserServer",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/user_service/user_service/UserServerMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/UserServerConfig.json"]
+        },
+        {
+            "name": "Debug KYC Server",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/user_service/kyc_service/KYCMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/KYCServerConfig.json"]
+        },
+        {
+            "name": "Debug SignServer",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/sign_service/SignServerMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/SignServerConfig.json"]
+        },
+        {
+            "name": "Debug MerchantAdminServer",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/admin_service/merchant_admin/MerchantAdminServerMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/MerchantAdminServerConfig.json"]
+        },
+        {
+            "name": "Debug AdminServer",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/admin_service/admin/AdminServerMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/AdminServerConfig.json"]
+        },
+        {
+            "name": "Debug Approval Observer",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/asset_service/approval_observer/ApprovalObserverMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/ApprovalObserver.json"]
+        },
+        {
+            "name": "Debug Withdraw Observer",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/asset_service/withdraw_observer/WithdrawObserverMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/WithdrawObserverConfig.json"]
+        },
+        {
+            "name": "Debug Deposit Observer",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/asset_service/deposit_observer/DepositObserverMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/DepositObserverConfig.json"]
+        },   
+        {
+            "name": "Debug User Observer",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/asset_service/user_observer/UserObserverMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/UserObserverConfig.json"]
+        },  
+        {
+            "name": "Debug Background Server",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/asset_service/background/BackgroundServiceMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/BackgroundServerConfig.json"]
+        },   
+        {
+            "name": "Debug Wallet Background Indexer",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/report_service/wallet_background_indexer/WalletBackgroundIndexerMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/WalletBackgroundIndexerConfig.json"]
+        },       
+        {
+            "name": "Debug Block Chain Indexer",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/report_service/block_chain_indexer/BlockChainIndexerMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/BlockChainIndexerConfig.json"]
+        },       
+        {
+            "name": "Debug TestServer",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/foundation/server/test/main/main.go",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "buildFlags": "-tags dev",
+            "env": {
+                
+            },
+            "args": ["--config", "${workspaceFolder}/bin/debug/TestServerConfig.json"]
+        },
+        {
+            "name": "Debug Encrypt Tool",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/tool/encrypt_tool/EncryptTool.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "_args": ["rsa", "-o", "depositObserverKey.txt", "-t", "MIICXAIBAAKBgQDBUTY0ncrHX7xS0hmWbmSgO6vV1aYMlVViRETF4U8fyaGbsezol8LuMvGPjSIiPAIQGH3K9iDC6Z242PdKdzpgFL7D4TB0+1rxiHn/afcwLA+Rw7U20ZiQFkskbuqKivaZ2+Ct0gscfV/gJwmbzIoIRtl2UySYxmLXsNs4H01yHwIDAQABAoGADUheOBlLcI2EbBBhj7OAGH5hHS0z3pN4LWtRamNDw4RgJUmBZK3gx+saK+nfmYiT/7UfF433zEyu+J93xlcQ3KCKBKjz+fQe9lE1R2APJxP6kHLNoM2E96R4r8fh2GqMJoaduJlyR3SfjKDy1ltfO0Z8PL+dIHXRAot43ufQAnECQQDPEcasRnPenAtqjG+baNbEv0zFFC7GUTx3aMQTSkZ2Wb3JhSK4jcXlutCjkeT9SQssXKgLlwJyTvNdci7CpQ73AkEA7v+GgOM+kAtWrBQS1ESbDxnlSyVnJbo2mgiCUo0XFsw2XUXtf8V8288PJOXfuvtAqJX6O9lO+9F4KvczDT3kGQJBAKPGEXaMOnSkwrrA3Dz0jHkMPLHbJquf8M0YxYvkQRq2G89ZR37kUtNCEGZuq8hQj0/E8PxJsZurKfyMpMM6PT0CQFSyNz9LyOsRKZj30ChrW6wBWFHGIoSrNhhmNZD9sRYCLq3lTyI9oV7gRRSlZiEEU0irRa+Z9jSlafmH+w6RRVkCQAhivlRyiH05HwJewXk/6nwlUE/4ZI879IZH6oguL7D0y2buqQrc1v2abL+5xMW7WdyYQTY2P8GHZWcQiuNXOrk="],
+            "args":["serverAuthKey", "-o", "serverKey.txt"],
+        },  
+        {
+            "name": "Debug Key Gen",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/tool/key_gen/KeyGen.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["aes"],
+        },
+        {
+            "name": "Debug Smart Contract Validator",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/tool/smart_contract_validator/SmartContractValidatorMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+        },
+        {
+            "name": "Debug Sweep Service",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/asset_service/sweep_service/SweepServiceMain.go",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/SweepServerConfig.json"]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Nodejs unit test debug",
+            "skipFiles": ["<node_internals>/**"],
+            "preLaunchTask": "build typescript unit test",
+            "program": "${workspaceFolder}/typescript/dist/test/index.js",
+            "cwd":"${workspaceFolder}/bin/debug/",
+          },
+          {
+            "name": "Debug Server Control Client",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/tool/server_control_client/",
+            "env": {},
+            "buildFlags": "-tags dev",
+            "cwd":"${workspaceFolder}/bin/debug/",
+            "args": ["--config", "${workspaceFolder}/bin/debug/ServerControlClientConfig.json", "--uds", "/tmp/configServerControl"]
+        }, 
+    ]
+}

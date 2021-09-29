@@ -1,0 +1,62 @@
+{
+    "solidity.compileUsingRemoteVersion": "v0.6.2+commit.bacdbe57",
+    "go.languageServerExperimentalFeatures": {
+        "format": true,
+        "autoComplete": true,
+        "rename": true,
+        "goToDefinition": true,
+        "hover": true,
+        "signatureHelp": true,
+        "goToTypeDefinition": true,
+        "goToImplementation": true,
+        "documentSymbols": true,
+        "workspaceSymbols": true,
+        "findReferences": true,
+        "diagnostics": true,
+        "documentLink": true
+      },
+    "go.useLanguageServer": true,
+    "go.delveConfig": {
+      "debugAdapter": "legacy",
+      "apiVersion": 2,
+      "showGlobalVariables": false,
+      "dlvLoadConfig": {
+        "maxStringLen": 10000,
+      },
+    },
+    "go.lintTool": "golangci-lint",
+    "go.testTags": "dev,unittest_dev",
+    "go.testFlags": [
+      "-v"
+    ],
+    "yaml.customTags": [
+      "!And",
+      "!And sequence",
+      "!If",
+      "!If sequence",
+      "!Not",
+      "!Not sequence",
+      "!Equals",
+      "!Equals sequence",
+      "!Or",
+      "!Or sequence",
+      "!FindInMap",
+      "!FindInMap sequence",
+      "!Base64",
+      "!Join",
+      "!Join sequence",
+      "!Cidr",
+      "!Ref",
+      "!Sub",
+      "!Sub sequence",
+      "!GetAtt",
+      "!GetAZs",
+      "!ImportValue",
+      "!ImportValue sequence",
+      "!Select",
+      "!Select sequence",
+      "!Split",
+      "!Split sequence"
+    ]
+    
+}
