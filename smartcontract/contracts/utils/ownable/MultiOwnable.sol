@@ -16,14 +16,14 @@ import "../basic/Context.sol";
  * the owner.
  */
  abstract contract MultiOwnable is Context {
-    address [] internal ownerList;
+    address [] private ownerList;
     mapping (address => bool) private isOwnerMap;
 
     //mapping(address=>Account) public _owners;
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
     event OwnerAdded(address indexed owner);
     event OwnerRemoved(address indexed owner);
-    event Event(string);
+    
     /**
      * @dev Initializes the contract setting the deployer as the initial owner.
      */
@@ -46,14 +46,14 @@ import "../basic/Context.sol";
      /**
      * @dev Throws if called by any account other than the owner.
      */
-    modifier isNotOwnerExist(address newOwner) {
+    modifier isNotInOwners(address newOwner) {
         require(isOwnerMap[newOwner]!=true, "Address already is an owner");
         _;
     }
 
 
-    modifier isOwnerExist(address owner) {
-        require(isOwnerMap[owner]);
+    modifier isInOwners(address owner) {
+        require(isOwnerMap[owner], "Owner not exists");
         _;
     }
 
@@ -77,7 +77,7 @@ import "../basic/Context.sol";
     }
     function addOwner(address newOwner) public 
         onlyOwner 
-        isNotOwnerExist(newOwner){
+        isNotInOwners(newOwner){
 
         isOwnerMap[newOwner]=true;
         ownerList.push(newOwner);
@@ -92,7 +92,7 @@ import "../basic/Context.sol";
     function removeOwner(address owner)
         public
         onlyOwner
-        isOwnerExist(owner)
+        isInOwners(owner)
     {
         isOwnerMap[owner] = false;
         uint ownerCount = ownerList.length;

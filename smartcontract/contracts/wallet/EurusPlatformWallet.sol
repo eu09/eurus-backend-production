@@ -4,8 +4,15 @@ pragma experimental ABIEncoderV2;
 import "../utils/ownable/ReadWritePermissionable.sol";
 import "../erc20/basic/ERC20.sol";
 import "../config/EurusInternalConfig.sol";
+import "../utils/maths/SafeMath.sol";
+import "../utils/basic/Address.sol";
+import "../erc20/extend/SafeERC20.sol";
 
 contract EurusPlatformWallet is ReadWritePermissionable{
+    using SafeMath for uint256;
+    using Address for address;
+    using Address for address payable;
+    using SafeERC20 for ERC20;
 
     bytes32 constant internal ethNameHash = keccak256(abi.encodePacked("ETH"));
     EurusInternalConfig internal internalConfig;
@@ -20,6 +27,7 @@ contract EurusPlatformWallet is ReadWritePermissionable{
     }
 
     function setEurusInternalConfig(address addr) public onlyOwner{
+        require(addr.isContract(), 'Input address is not a smart contract address');
         internalConfig = EurusInternalConfig(addr);
     }
 
@@ -40,19 +48,20 @@ contract EurusPlatformWallet is ReadWritePermissionable{
 
             uint8 targetDecimal = erc20.decimals();
             if (targetDecimal == decimal ){
-
-                erc20.transfer(toAddr, amount);
+                erc20.safeTransfer(toAddr, amount);
             }else if (targetDecimal > decimal){
                 uint8 delta = targetDecimal - decimal;
-                uint256 targetAmount = amount * (10 ^ delta);
-                erc20.transfer(toAddr, targetAmount);
+                require(delta <= 30, 'Target decimal point different cannot larger than 30');
+                uint256 targetAmount =  amount.mul(uint256(10) ** delta);
+                erc20.safeTransfer(toAddr, targetAmount);
             }else {
-                uint8 delta =  decimal - targetDecimal;
-                uint256 targetAmount = amount / (10 ^ delta);
-                erc20.transfer(toAddr, targetAmount);
+                uint256 delta =  decimal - targetDecimal;
+                require(delta <= 30, 'Side chain decimal point different cannot larger than 30');
+                uint256 targetAmount = amount.div(uint256(10) ** delta);
+                erc20.safeTransfer(toAddr, targetAmount);
             }
         }else {
-            payable(toAddr).transfer(amount);
+            payable(toAddr).sendValue(amount);
         }
     }
 

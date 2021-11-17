@@ -1,14 +1,18 @@
 pragma solidity >=0.6.0 <0.8.0;
 
 import "./OwnedUpgradeabilityProxy.sol";
+import "../basic/Address.sol";
 
 contract EtherForwardOwnedUpgradeabilityProxy is OwnedUpgradeabilityProxy {
+
+    using Address for address payable;
+
     bytes32 private constant addressPosition = keccak256("eurus.proxy.etherforward.address");
 
     receive() external payable override {
         address addr = etherForwardAddress();
         require(addr != address(0), "Address is 0");
-        payable(addr).transfer(msg.value);
+        payable(addr).sendValue(msg.value);
     }
 
     function etherForwardAddress() public view returns (address addr) {

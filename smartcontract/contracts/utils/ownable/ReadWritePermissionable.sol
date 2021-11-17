@@ -15,6 +15,8 @@ import "../basic/Context.sol";
     event ReaderRemoved(address indexed reader);
     event WriterAdded(address indexed writer);
     event WriterRemoved(address indexed writer);
+
+    uint256 constant MAX_LENGTH = 500;
     /**
      * @dev Initializes the contract setting the deployer as the initial owner.
      */
@@ -76,6 +78,7 @@ import "../basic/Context.sol";
     function addReader(address newReader) public 
         onlyOwner 
         isReaderNotExist(newReader){
+        require(readerList.length <= MAX_LENGTH , "Reader list full");
         readerMap[newReader]=true;
         readerList.push(newReader);
         emit ReaderAdded(newReader);
@@ -84,12 +87,13 @@ import "../basic/Context.sol";
     function addWriter(address newWriter) public 
         onlyOwner 
         isWriterNotExist(newWriter){
+        require(writerList.length <= MAX_LENGTH , "Writer list full");
         writerMap[newWriter]=true;
         writerList.push(newWriter);
         emit WriterAdded(newWriter);
     }
 
-    function removerReader(address existingReader)
+    function removeReader(address existingReader)
         public
         onlyOwner
         isReaderExist(existingReader)
@@ -104,10 +108,10 @@ import "../basic/Context.sol";
         }
 
         readerList.pop();
-        ReaderRemoved(existingReader);
+        emit ReaderRemoved(existingReader);
     }
 
-    function removerWriter(address existingWriter)
+    function removeWriter(address existingWriter)
         public
         onlyOwner
         isWriterExist(existingWriter)
@@ -122,7 +126,7 @@ import "../basic/Context.sol";
         }
 
         writerList.pop();
-        WriterRemoved(existingWriter);
+        emit WriterRemoved(existingWriter);
     }
 
      function isWriter(address addr)public view returns (bool){

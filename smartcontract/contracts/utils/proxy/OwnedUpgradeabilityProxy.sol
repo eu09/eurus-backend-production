@@ -1,14 +1,12 @@
 pragma solidity >=0.6.0 <0.8.0;
 
 import './UpgradeabilityProxy.sol';
-
+import '../ownable/MultiOwnable.sol';
 /**
  * @title OwnedUpgradeabilityProxy
  * @dev This contract combines an upgradeability proxy with basic authorization control functionalities
  */
-contract OwnedUpgradeabilityProxy is UpgradeabilityProxy {
-  address[] internal placeholder0; //Owner list
-  mapping (address => bool) internal placeholder1; //Owner map
+contract OwnedUpgradeabilityProxy is MultiOwnable, UpgradeabilityProxy {
 
   /**
   * @dev Event to show ownership has been transferred
@@ -23,17 +21,15 @@ contract OwnedUpgradeabilityProxy is UpgradeabilityProxy {
   /**
   * @dev the constructor sets the original owner of the contract to the sender account.
   */
-  constructor () public {
+  constructor () MultiOwnable() public{
     setUpgradeabilityOwner(msg.sender);
-    placeholder0.push( msg.sender);
-    placeholder1[msg.sender] = true;
   }
 
   /**
   * @dev Throws if called by any account other than the owner.
   */
   modifier onlyProxyOwner() {
-    require(msg.sender == proxyOwner());
+    require(msg.sender == proxyOwner(), "Not a proxy owner");
     _;
   }
 
@@ -63,7 +59,7 @@ contract OwnedUpgradeabilityProxy is UpgradeabilityProxy {
    * @param newOwner The address to transfer ownership to.
    */
   function transferProxyOwnership(address newOwner) public onlyProxyOwner {
-    require(newOwner != address(0));
+    require(newOwner != address(0), "address is 0");
     emit ProxyOwnershipTransferred(proxyOwner(), newOwner);
     setUpgradeabilityOwner(newOwner);
   }
@@ -87,6 +83,10 @@ contract OwnedUpgradeabilityProxy is UpgradeabilityProxy {
     upgradeTo(implementation);
     //require(this.call.value(msg.value)(data));
     (bool success, ) = address(this).call.value(msg.value)(data);
-    require(success);
+    require(success,'call failed');
   }
+
+    function withdrawETHFromProxy(address payable dest, uint256 amount) public onlyProxyOwner {
+        withdrawETHFromProxyInternal(dest, amount);
+    }
 }

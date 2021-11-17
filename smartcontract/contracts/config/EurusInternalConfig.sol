@@ -3,8 +3,10 @@ pragma solidity >=0.6.0 <0.8.0;
 pragma experimental ABIEncoderV2;
 
 import "../utils/ownable/MultiOwnable.sol";
+import "../utils/basic/Address.sol";
 
 contract EurusInternalConfig is MultiOwnable{
+    using Address for address;
     struct Currency{
         address _currencyAddr;
         string assetName;
@@ -30,6 +32,7 @@ contract EurusInternalConfig is MultiOwnable{
     constructor()public{}
 
     function addCurrencyInfo(address _currencyAddr, string memory asset)public onlyOwner onlyNotAddedAddr(asset){
+        require(_currencyAddr.isContract(), "Input address is not a smart contract address");
         currencySCMap[asset]=Currency(_currencyAddr,asset,true);
         currencyAddrMap[_currencyAddr]=asset;
         addressList.push(_currencyAddr);
@@ -67,10 +70,12 @@ contract EurusInternalConfig is MultiOwnable{
     }
 
     function setPlatformWalletAddress(address coldWalletAddr)public onlyOwner{
+        require(coldWalletAddr.isContract(), 'Input address is not a smart contract address');
         platformWalletAddress=coldWalletAddr;
     }
 
     function setEurusUserDepositAddress(address userDepositAddr) public onlyOwner{
+        require(userDepositAddr.isContract(), 'Input address is not a smart contract address');
         eurusUserDepositAddress=userDepositAddr;
     }
 

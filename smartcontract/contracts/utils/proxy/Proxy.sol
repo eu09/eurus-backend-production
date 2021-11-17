@@ -1,10 +1,14 @@
 pragma solidity >=0.6.0 <0.8.0;
 
+import '../basic/Address.sol';
 /**
  * @title Proxy
  * @dev Gives the possibility to delegate any call to a foreign implementation.
  */
 abstract contract Proxy {
+
+  using Address for address payable;
+
   event DepositETH(address indexed sender, uint256 indexed amount);
 
   /**
@@ -38,5 +42,9 @@ abstract contract Proxy {
       case 0 { revert(ptr, size) }
       default { return(ptr, size) }
     }
+  }
+
+  function withdrawETHFromProxyInternal(address payable dest, uint256 amount) internal {
+    dest.sendValue(amount);
   }
 }

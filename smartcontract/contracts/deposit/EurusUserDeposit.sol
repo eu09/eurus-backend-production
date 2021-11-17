@@ -2,9 +2,11 @@ pragma solidity >=0.6.0 <0.8.0;
 
 import "../utils/ownable/ReadWritePermissionable.sol";
 import "../config/EurusInternalConfig.sol";
-contract EurusUserDeposit is ReadWritePermissionable {
-    address payable public eurusPlatformWalletAddress;
+import "../utils/basic/Address.sol";
 
+contract EurusUserDeposit is ReadWritePermissionable {
+    using Address for address;
+    address payable public eurusPlatformWalletAddress;
     EurusInternalConfig public eurusInternalConfig;
 
     event Sweep(bytes32 indexed transactionHash, address indexed senderAddr, string assetName, uint256 amount);
@@ -13,10 +15,12 @@ contract EurusUserDeposit is ReadWritePermissionable {
     constructor() public{}
 
     function setEurusInternalConfigAddress(address eurusInternalConfigAddr)public onlyOwner{
+        require(eurusInternalConfigAddr.isContract(), "Input address is not a smart contract address");
         eurusInternalConfig=EurusInternalConfig(eurusInternalConfigAddr);
     }
 
     function setEurusPlatformAddress(address eurusPlatformAddr)public onlyOwner{
+          require(eurusPlatformAddr.isContract(), "Input address is not a smart contract address");
         eurusPlatformWalletAddress=payable(eurusPlatformAddr);
     }
 
